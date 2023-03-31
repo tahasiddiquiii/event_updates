@@ -27,7 +27,6 @@ class _HomeScreenState extends State<HomeScreen> {
       log('home response: $response');
 
       setState(() {
-        // _data = response.body;
         mapResponse = jsonDecode(response.body);
         listResponse = mapResponse['content']['data'];
       });
@@ -101,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => EventDetailScreen(
-                          index: index,
+                          id: listResponse![index]['id'],
                         ),
                       ),
                     );

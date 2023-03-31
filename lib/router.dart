@@ -19,7 +19,7 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
       return MaterialPageRoute(
         settings: routeSettings,
         builder: (_) => EventDetailScreen(
-          index: 0,
+          id: 0,
         ),
       );
     default:

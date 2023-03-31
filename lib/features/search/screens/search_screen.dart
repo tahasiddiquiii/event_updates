@@ -26,7 +26,6 @@ class _SearchScreenState extends State<SearchScreen> {
 
     if (response.statusCode == 200) {
       setState(() {
-        // _data = response.body;
         mapResponse = jsonDecode(response.body);
         listResponse = mapResponse['content']['data'];
       });
@@ -166,7 +165,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             context,
                             MaterialPageRoute(
                               builder: (context) => EventDetailScreen(
-                                index: index,
+                                id: listResponse![index]['id'],
                               ),
                             ),
                           );
@@ -208,7 +207,6 @@ class _SearchScreenState extends State<SearchScreen> {
                                   ),
                                 ),
                                 Expanded(
-                                  // added Expanded widget
                                   child: Column(
                                     children: [
                                       Container(

@@ -10,10 +10,10 @@ class EventDetailScreen extends StatefulWidget {
 
   EventDetailScreen({
     super.key,
-    required this.index,
+    required this.id,
   });
 
-  int index;
+  final int id;
 
   @override
   State<EventDetailScreen> createState() => _EventDetailScreenState();
@@ -26,7 +26,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
 
   Future<void> _fetchData() async {
     final response = await http.get(Uri.parse(
-        'https://sde-007.api.assignment.theinternetfolks.works/v1/event/${widget.index + 1}'));
+        'https://sde-007.api.assignment.theinternetfolks.works/v1/event/${widget.id}'));
 
     if (response.statusCode == 200) {
       setState(() {
@@ -337,13 +337,14 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                       overflow: TextOverflow.fade,
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
                   Center(
                     child: CustomButton(
                       text: 'Book Now',
                       onTap: () {},
                     ),
-                  )
+                  ),
+                  const SizedBox(height: 20),
                 ],
               ),
             ),
