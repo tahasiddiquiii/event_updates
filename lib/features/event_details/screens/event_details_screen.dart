@@ -135,7 +135,14 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                             margin: const EdgeInsets.only(right: 20),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(10),
-                              child: Image.asset('assets/images/tif.png'),
+                              child: Image.network(
+                                listResponse!['organiser_icon'].endsWith('.svg')
+                                    ? 'https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png'
+                                    : listResponse!['organiser_icon'],
+                                fit: BoxFit.fitHeight,
+                                height: 55,
+                                width: 55,
+                              ),
                             ),
                           ),
                           Column(
