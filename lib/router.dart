@@ -18,7 +18,7 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
     case EventDetailScreen.routeName:
       return MaterialPageRoute(
         settings: routeSettings,
-        builder: (_) => EventDetailScreen(
+        builder: (_) => const EventDetailScreen(
           id: 0,
         ),
       );

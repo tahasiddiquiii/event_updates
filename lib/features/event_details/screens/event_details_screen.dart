@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 class EventDetailScreen extends StatefulWidget {
   static const String routeName = '/event-details';
 
-  EventDetailScreen({
+  const EventDetailScreen({
     super.key,
     required this.id,
   });
