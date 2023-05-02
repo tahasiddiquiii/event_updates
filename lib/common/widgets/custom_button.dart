@@ -26,6 +26,9 @@ class CustomButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            const SizedBox(
+              width: 35,
+            ),
             Expanded(
               child: Center(
                 child: Text(

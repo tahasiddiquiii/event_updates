@@ -4,6 +4,7 @@ import 'package:event_updates_tif/features/event_details/screens/event_details_s
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:intl/intl.dart';
 
 class SearchScreen extends StatefulWidget {
   static const String routeName = '/search-screen';
@@ -175,6 +176,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             horizontal: 20,
                             vertical: 16,
                           ),
+                          height: 106,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
                             color: GlobalVariables.backgroundColor,
@@ -201,84 +203,98 @@ class _SearchScreenState extends State<SearchScreen> {
                                         ? 'https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png'
                                         : listResponse![index]
                                             ['organiser_icon'],
-                                    fit: BoxFit.fitHeight,
-                                    height: 135,
-                                    width: 135,
+                                    fit: BoxFit.contain,
                                   ),
                                 ),
+                                const SizedBox(width: 10),
                                 Expanded(
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        width: 235,
-                                        padding: const EdgeInsets.only(
-                                            left: 10, top: 1),
-                                        child: Text(
-                                          listResponse![index]['date_time']
-                                              .toString(),
-                                          style: const TextStyle(
-                                            color:
-                                                GlobalVariables.secondaryColor,
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 12,
+                                  child: Container(
+                                    margin: const EdgeInsets.only(left: 10),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          width: 235,
+                                          padding: const EdgeInsets.only(
+                                            left: 10,
                                           ),
-                                          maxLines: 2,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ),
-                                      Container(
-                                        width: 235,
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 10,
-                                          vertical: 7,
-                                        ),
-                                        child: Text(
-                                          listResponse![index]['title']
-                                              .toString(),
-                                          style: const TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                          maxLines: 2,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        height: 11,
-                                      ),
-                                      Container(
-                                        width: 235,
-                                        padding: const EdgeInsets.only(
-                                            left: 10, top: 1),
-                                        child: Row(
-                                          children: [
-                                            const Padding(
-                                              padding:
-                                                  EdgeInsets.only(right: 5.0),
-                                              child: Icon(
-                                                Icons.location_on,
-                                                size: 18,
-                                                color:
-                                                    GlobalVariables.hintColor,
+                                          child: Text(
+                                            DateFormat('d MMM - EEE - h:mm a ')
+                                                .format(
+                                              DateTime.parse(
+                                                listResponse![index]
+                                                    ['date_time'],
                                               ),
                                             ),
-                                            Expanded(
-                                              child: Text(
-                                                '${listResponse![index]['venue_name'].toString()} • ${listResponse![index]['venue_city']}, ${listResponse![index]['venue_country']}',
-                                                style: const TextStyle(
+                                            style: const TextStyle(
+                                              color: GlobalVariables
+                                                  .secondaryColor,
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 12,
+                                            ),
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                        ),
+                                        Container(
+                                          width: 235,
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 10,
+                                            vertical: 7,
+                                          ),
+                                          child: Text(
+                                            listResponse![index]['title']
+                                                .toString(),
+                                            style: const TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 1,
+                                        ),
+                                        Container(
+                                          width: 235,
+                                          padding: const EdgeInsets.only(
+                                            left: 7,
+                                          ),
+                                          child: Row(
+                                            children: [
+                                              const Padding(
+                                                padding:
+                                                    EdgeInsets.only(right: 5.0),
+                                                child: Icon(
+                                                  Icons.location_on,
+                                                  size: 18,
                                                   color:
                                                       GlobalVariables.hintColor,
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 13,
                                                 ),
-                                                maxLines: 1,
-                                                overflow: TextOverflow.ellipsis,
                                               ),
-                                            ),
-                                          ],
+                                              Expanded(
+                                                child: Text(
+                                                  '${listResponse![index]['venue_name'].toString()} • ${listResponse![index]['venue_city']}, ${listResponse![index]['venue_country']}',
+                                                  style: const TextStyle(
+                                                    color: GlobalVariables
+                                                        .hintColor,
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 13,
+                                                  ),
+                                                  maxLines: 1,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ],

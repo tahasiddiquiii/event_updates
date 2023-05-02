@@ -4,6 +4,8 @@ import 'package:event_updates_tif/common/widgets/loader.dart';
 import 'package:event_updates_tif/constants/global_variables.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
+import 'package:readmore/readmore.dart';
 
 class EventDetailScreen extends StatefulWidget {
   static const String routeName = '/event-details';
@@ -31,7 +33,6 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
     if (response.statusCode == 200) {
       setState(() {
         mapResponse = jsonDecode(response.body);
-
         listResponse = mapResponse['content']['data'];
       });
     } else {
@@ -222,7 +223,11 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                                   vertical: 7,
                                 ),
                                 child: Text(
-                                  listResponse['date_time'],
+                                  DateFormat('d MMM, yyyy').format(
+                                    DateTime.parse(
+                                      listResponse['date_time'],
+                                    ),
+                                  ),
                                   style: const TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.w400,
@@ -236,7 +241,11 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                                 padding:
                                     const EdgeInsets.only(left: 10, top: 1),
                                 child: Text(
-                                  listResponse['date_time'],
+                                  DateFormat('EEEE, h:mm a').format(
+                                    DateTime.parse(
+                                      listResponse['date_time'],
+                                    ),
+                                  ),
                                   style: const TextStyle(
                                     color: GlobalVariables.subHeadingColor,
                                     fontWeight: FontWeight.w400,
@@ -333,15 +342,23 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                   ),
                   Container(
                     margin: const EdgeInsets.only(
-                        left: 34, right: 38, top: 1, bottom: 21),
-                    child: Text(
+                      left: 34,
+                      right: 38,
+                      top: 1,
+                    ),
+                    child: ReadMoreText(
                       listResponse['description'],
+                      trimLines: 4,
+                      textAlign: TextAlign.justify,
+                      colorClickableText: Colors.blue,
+                      trimMode: TrimMode.Line,
+                      trimCollapsedText: 'Read more',
+                      trimExpandedText: ' Show less',
                       style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400),
-                      // maxLines: 5,
-                      overflow: TextOverflow.fade,
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 20),

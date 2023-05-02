@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'EVENTS',
       theme: ThemeData(
+        fontFamily: 'Inter',
         scaffoldBackgroundColor: GlobalVariables.backgroundColor,
         colorScheme: const ColorScheme.light(
           primary: GlobalVariables.secondaryColor,
