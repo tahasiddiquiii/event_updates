@@ -1,16 +1,17 @@
-# event_updates_tif
+# Event Updates
+Flutter app for events, consisting of three screens:
+- Home Screen, 
+- Event Details Screen, and 
+- Search Screen. 
 
-A new Flutter project.
+users would be able to:
+- View the optimal layout for the app depending on their device's screen size - mobile or tablet
+- Search for events by name using the search functionality (with Event Search API)
+- View the details of each event by tapping on them in the Home or Search screens
 
-## Getting Started
+# APK Download link
+https://drive.google.com/drive/folders/1rSm2e75dZ3O29N1yAclqdjV97io67ply?usp=share_link
 
-This project is a starting point for a Flutter application.
+## Working Video
+https://user-images.githubusercontent.com/95746746/235801137-6c1271a3-0f4f-49a9-9c9b-498e04aacec8.mp4
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
