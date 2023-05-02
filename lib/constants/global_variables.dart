@@ -10,7 +10,7 @@ class GlobalVariables {
     stops: [0.5, 1.0],
   );
 
-  static const secondaryColor = Color.fromRGBO(86, 105, 255, 1);
+  static const secondaryColor = Color(0xff5669FF);
   static const hintColor = Color.fromRGBO(168, 167, 167, 1);
   static const shadowcolorColor = Color.fromRGBO(248, 248, 248, 1);
   static const backgroundColor = Colors.white;
